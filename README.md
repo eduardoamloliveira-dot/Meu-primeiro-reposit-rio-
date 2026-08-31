@@ -1,2 +1,2 @@
-# Meu-primeiro-reposit-rio-
+# Meu-primeiro-repositorio-
 Técnico em Desenvolvimento de Sistemas 
