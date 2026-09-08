@@ -1,0 +1,87 @@
+CÓDIGO DESENVOLVIDO PARA INSERÇÃO EM UM SITE DE CONSULTORIA AMBIENTAL 
+
+def executar_simulacao():
+    print("=" * 60)
+    print("⚡ SISTEMA DE MEDIÇÃO DE CONSUMO ELÉTRICO INTELIGENTE ⚡")
+    print("=" * 60)
+    
+    # 1. Solicita o nome do usuário inicialmente e faz a saudação
+    nome_usuario = input("Digite seu nome completo: ").strip()
+    print("\n" + "=" * 60)
+    print(f"Saudações {nome_usuario}, bem-vindo ao sistema de medição de consumo!")
+    print("=" * 60)
+
+    # Lista para armazenar o histórico de itens e tarifa padrão
+    historico_aparelhos = []
+    TARIFA_KWH = 0.75
+
+    # 2. Loop principal para inserção dos dados dos equipamentos
+    while True:
+        print("\n--- Cadastrar Novo Aparelho ---")
+        aparelho = input("Digite o nome do aparelho (ex: Geladeira) ou 'sair' para ver o total: ").strip()
+        
+        if aparelho.lower() == 'sair':
+            break
+            
+        if not aparelho:
+            print("❌ O nome do aparelho não pode ser vazio.")
+            continue
+
+        # Validação individual da Potência (se errar, volta para esta linha)
+        while True:
+            try:
+                potencia = float(input(f"Digite a potência de ({aparelho}) em Watts (W): "))
+                break  # Sai do laço se o valor for numérico e válido
+            except ValueError:
+                print("❌ Erro: Por favor, insira um valor numérico válido para a potência.")
+
+        # Validação individual das Horas (se errar, volta para esta linha)
+        while True:
+            try:
+                horas_dia = float(input(f"Quantas horas por dia o(a) {aparelho} fica ligado(a)? "))
+                if 0 <= horas_dia <= 24:
+                    break  # Sai do laço se o valor for um horário diário real
+                else:
+                    print("❌ Erro: O dia possui apenas 24 horas. Insira um valor entre 0 e 24.")
+            except ValueError:
+                print("❌ Erro: Por favor, insira um valor numérico válido para as horas.")
+
+        # Cálculos de consumo e custo após dados validados
+        consumo_mensal = (potencia * horas_dia * 30) / 1000
+        custo_estimado = consumo_mensal * TARIFA_KWH
+
+        # Adiciona o equipamento à lista
+        historico_aparelhos.append({
+            "nome": aparelho,
+            "consumo": consumo_mensal,
+            "custo": custo_estimado
+        })
+        print(f"✅ {aparelho} adicionado à lista!")
+
+    # 3. Exibição do retorno final com a lista e os valores totais mensais
+    print("\n" + "=" * 60)
+    print(f"📊 LISTA DE CONSUMO E RELATÓRIO FINAL - {nome_usuario.upper()}")
+    print("=" * 60)
+
+    if not historico_aparelhos:
+        print("Nenhum aparelho foi cadastrado na sessão.")
+    else:
+        total_consumo_mes = 0
+        total_custo_mes = 0
+        
+        # Apresenta a lista de itens inseridos
+        for item in historico_aparelhos:
+            print(f"🔹 {item['nome']}: {item['consumo']:.2f} kWh/mês | Custo: R$ {item['custo']:.2f}")
+            total_consumo_mes += item['consumo']
+            total_custo_mes += item['custo']
+            
+        print("-" * 60)
+        # Retorno do valor total consumido por mês
+        print(f"📉 VALOR TOTAL CONSUMIDO POR MÊS: {total_consumo_mes:.2f} kWh/mês")
+        print(f"💰 CUSTO TOTAL MENSAL ESTIMADO: R$ {total_custo_mes:.2f}")
+    
+    print("=" * 60)
+
+# Garante o início correto do programa executando a simulação principal
+if __name__ == "__main__":
+    executar_simulacao()
