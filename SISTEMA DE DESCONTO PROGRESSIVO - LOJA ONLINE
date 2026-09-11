@@ -1,0 +1,37 @@
+#-------------------------------------------------------------------------------
+# SISTEMA DE DESCONTO PROGRESSIVO - LOJA ONLINE
+#-------------------------------------------------------------------------------
+
+def calcular_desconto():
+    print("--- Bem-vindo ao Sistema de Desconto Progressivo ---")
+    
+    # ENTRADA DE DADOS: Solicita o valor total da compra ao usuário
+    try:
+        valor_total = float(input("Digite o valor total da compra (R$): "))
+    except ValueError:
+        print("Erro: Por favor, insira um valor numérico válido.")
+        return
+
+    # PROCESSAMENTO: Aplica as regras de desconto com base no valor inserido
+    # Utiliza a estrutura condicional aninhada (if/elif/else) de forma otimizada
+    if valor_total < 200.00:
+        percentual = 5
+    elif valor_total < 300.00:  # Não precisa testar '>= 200' pois a condição anterior já eliminou essa opção
+        percentual = 10
+    else:                       # Qualquer valor maior ou igual a 300.00 entra aqui
+        percentual = 15
+
+    # CÁLCULOS: Descobre o valor absoluto do desconto e o total final a pagar
+    valor_desconto = valor_total * (percentual / 100)
+    total_com_desconto = valor_total - valor_desconto
+
+    # SAÍDA DE DADOS: Exibe os resultados formatados para o cliente
+    print("\n--- RESUMO DA COMPRA ---")
+    print(f"Valor original:     R$ {valor_total:.2f}")
+    print(f"Desconto aplicado:  {percentual}% (R$ {valor_desconto:.2f})")
+    print(f"Total a pagar:      R$ {total_com_desconto:.2f}")
+    print("------------------------")
+
+# Executa o programa
+if __name__ == "__main__":
+    calcular_desconto()
