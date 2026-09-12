@@ -1,0 +1,44 @@
+def classificar_consumo():
+    print("=" * 50)
+    print("  CAMPANHA DE CONSCIENTIZAÇÃO AMBIENTAL - SANEAMENTO")
+    print("=" * 50)
+    
+    # Solicita e padroniza o tipo de imóvel
+    tipo_imovel = input("Digite o tipo de imóvel (casa, apartamento ou comercial): ").strip().lower()
+    
+    # Validação simples do tipo de imóvel
+    if tipo_imovel not in ["casa", "apartamento", "comercial"]:
+        print("\n❌ Tipo de imóvel inválido! Reinicie o programa e digite 'casa', 'apartamento' ou 'comercial'.")
+        return
+
+    # Solicita o consumo mensal
+    try:
+        consumo = float(input("Digite o consumo mensal de água em m³: ").replace(",", "."))
+        if consumo < 0:
+            print("\n❌ O consumo não pode ser um valor negativo.")
+            return
+    except ValueError:
+        print("\n❌ Consumo inválido! Digite apenas números decimais.")
+        return
+
+    print("\n" + "-" * 40)
+    print("RESULTADO DA ANÁLISE:")
+    print("-" * 40)
+
+    # Regras de Negócio para Classificação
+    if tipo_imovel == "comercial":
+        print("Tarifa comercial aplicada – consulte o plano corporativo.")
+        
+    elif tipo_imovel == "apartamento" and consumo < 10:
+        print("Consumo econômico – excelente controle de água!")
+        
+    elif tipo_imovel == "apartamento" or (tipo_imovel == "casa" and consumo <= 25):
+        print("Consumo moderado – dentro do padrão residencial.")
+        
+    else:
+        print("Consumo excessivo – adote medidas de economia e verifique vazamentos.")
+    
+    print("=" * 50)
+
+if __name__ == "__main__":
+    classificar_consumo()
