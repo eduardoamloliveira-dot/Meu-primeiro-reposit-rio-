@@ -1,0 +1,47 @@
+# Script de Pesquisa de Satisfação - TudoWeb
+
+# Inicialização dos contadores
+qtd_excelente = 0
+qtd_bom = 0
+qtd_ruim = 0
+
+# Definição do número de entrevistados (10 para teste, mudar para 50 na versão final)
+TOTAL_ENTREVISTADOS = 10
+
+print("--- INÍCIO DA PESQUISA DE SATISFAÇÃO TUDOWEB ---\n")
+
+# Estrutura de repetição para coletar os dados
+for i in range(1, TOTAL_ENTREVISTADOS + 1):
+    print(f"Entrevistado nº {i}")
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+    
+    # Validação da opinião para garantir que apenas 1, 2 ou 3 sejam digitados
+    while True:
+        print("Opinião sobre o atendimento:")
+        print("1 - EXCELENTE")
+        print("2 - BOM")
+        print("3 - RUIM")
+        opiniao = input("Escolha uma opção (1/2/3): ")
+        
+        # Estrutura de decisão para verificar a opinião
+        if opiniao == '1':
+            qtd_excelente += 1
+            break
+        elif opiniao == '2':
+            qtd_bom += 1
+            break
+        elif opiniao == '3':
+            qtd_ruim += 1
+            break
+        else:
+            print("Opção inválida! Por favor, digite 1, 2 ou 3.\n")
+            
+    print("-" * 30)
+
+# Exibição dos resultados finais
+print("\n--- RESULTADO FINAL DA PESQUISA ---")
+print(f"a) Quantidade de respostas 'EXCELENTE': {qtd_excelente}")
+print(f"b) Quantidade de respostas 'RUIM': {qtd_ruim}")
+print(f"Total de pessoas entrevistadas: {TOTAL_ENTREVISTADOS}")
+print("-----------------------------------")
