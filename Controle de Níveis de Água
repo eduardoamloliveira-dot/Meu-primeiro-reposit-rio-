@@ -1,55 +1,99 @@
-# 1. Lista que armazena os níveis e suas respectivas configurações
-# Cada nível é representado por um dicionário com a situação e a cor correspondente
-NIVEIS_RESERVATORIO = [
-    {"nivel": 1, "situacao": "Muito baixo (crítico)", "cor": Fore.RED},
-    {"nivel": 2, "situacao": "Baixo", "cor": Fore.YELLOW},
-    {"nivel": 3, "situacao": "Médio", "cor": Fore.GREEN},
-    {"nivel": 4, "situacao": "Alto", "cor": Fore.CYAN},
-    {"nivel": 5, "situacao": "Muito alto (alerta)", "cor": Fore.BLUE},
-]
+import time
+from colorama import Fore, Style, init
 
+# Inicializa o colorama com restauração automática do estilo padrão
+init(autoreset=True)
 
-def exibir_alerta(nivel_atual: int):
+# 1. Variáveis globais que funcionarão como a memória de configuração do sistema
+LIMITES_REFERENCIA = {}
+SITUACOES_RESERVATORIO = []
+
+# 2. Estágio de Configuração Inicial do Sistema
+def configurar_sistema_inicial():
     """
-    Função responsável por identificar o nível informado,
-    definir a cor correspondente e exibir a mensagem no terminal.
+    Simula o estágio de calibração e configuração inicial do sistema.
+    Define os parâmetros de referência e popula a lista de situações.
     """
-    # Busca o nível correspondente dentro da lista
-    alerta_encontrado = None
-    for item in NIVEIS_RESERVATORIO:
-        if item["nivel"] == nivel_atual:
-            alerta_encontrado = item
-            break
-
-    # Se o nível for válido, exibe a mensagem formatada
-    if alerta_encontrado:
-        cor = alerta_encontrado["cor"]
-        situacao = alerta_encontrado["situacao"]
-        
-        # Exibe a mensagem com a cor definida e restaura o padrão ao final (Style.RESET_ALL)
-        print(f"Status do Reservatório: Nível {nivel_atual} -> {cor}{situacao}{Style.RESET_ALL}")
-    else:
-        print(f"{Fore.WHITE}Nível {nivel_atual} inválido para o sistema.{Style.RESET_ALL}")
-
-
-def simular_sistema():
-    """
-    Função principal que simula o ambiente real de monitoramento,
-    percorrendo os níveis de água do reservatório.
-    """
-    print("=" * 50)
-    print("  SISTEMA DE MONITORAMENTO DE NÍVEL DE ÁGUA  ")
-    print("=" * 50)
+    global LIMITES_REFERENCIA, SITUACOES_RESERVATORIO
     
-    # Simulação automática passando por todos os níveis da lista
-    for item in NIVEIS_RESERVATORIO:
-        exibir_alerta(item["nivel"])
-        time.sleep(1)  # Pequena pausa de 1 segundo para simular o monitoramento em tempo real
+    print("=" * 55)
+    print("[SISTEMA] Iniciando Estágio de Configuração...")
+    print("=" * 55)
+    time.sleep(0.8)
+    
+    # Inserindo os valores de referência dos parâmetros (Simulação de Setup)
+    LIMITES_REFERENCIA = {
+        "limite_critico": 1,
+        "limite_baixo": 2,
+        "limite_medio": 3,
+        "limite_alto": 4,
+        "limite_maximo": 5
+    }
+    print("[SETUP] Parâmetros de nível carregados com sucesso.")
+    time.sleep(0.5)
+    
+    # Alimentando a lista com as mensagens correspondentes a cada referência
+    SITUACOES_RESERVATORIO = [
+        "Muito baixo (crítico)",  # Referente ao limite_critico
+        "Baixo",                 # Referente ao limite_baixo
+        "Médio",                 # Referente ao limite_medio
+        "Alto",                  # Referente ao limite_alto
+        "Muito alto (alerta)"    # Referente ao limite_maximo
+    ]
+    print("[SETUP] Mensagens de alerta vinculadas às referências.")
+    time.sleep(0.5)
+    print("\n[SISTEMA] Configuração concluída. Painel pronto para operação.\n")
+    time.sleep(1)
 
-    print("=" * 50)
-    print("Monitoramento finalizado.")
+
+# 3. Função de monitoramento baseada nas estruturas IF e ELIF
+def monitorar_e_exibir(nivel):
+    """
+    Avalia o nível do reservatório comparando-o com os valores de referência 
+    inseridos na configuração inicial através de estruturas condicionais complexas.
+    """
+    # Validação e decisão de cor baseada nas chaves do dicionário de referência
+    if nivel == LIMITES_REFERENCIA["limite_critico"]:
+        cor_sugerida = Fore.RED
+    elif nivel == LIMITES_REFERENCIA["limite_baixo"]:
+        cor_sugerida = Fore.YELLOW
+    elif nivel == LIMITES_REFERENCIA["limite_medio"]:
+        cor_sugerida = Fore.GREEN
+    elif nivel == LIMITES_REFERENCIA["limite_alto"]:
+        cor_sugerida = Fore.CYAN
+    elif nivel == LIMITES_REFERENCIA["limite_maximo"]:
+        cor_sugerida = Fore.BLUE
+    else:
+        print(f"{Fore.RED}Erro crítico: Nível {nivel} não corresponde aos parâmetros configurados!")
+        return
+
+    # Busca a mensagem correta na lista (ajustando o índice numérico)
+    mensagem = SITUACOES_RESERVATORIO[nivel - 1]
+
+    # Exibe a saída formatada no terminal
+    print(f"[SENSOR] Nível {nivel} -> {cor_sugerida}{Style.BRIGHT}{mensagem}")
 
 
-# Executa a simulação
+# 4. Função principal da simulação
+def iniciar_simulacao():
+    # Executa obrigatoriamente a configuração antes de iniciar as leituras
+    configurar_sistema_inicial()
+    
+    print("=" * 55)
+    print("  SISTEMA AUTOMÁTICO DE MONITORAMENTO DE RESERVATÓRIO  ")
+    print("=" * 55)
+    print("Aguardando varredura dos sensores...\n")
+    
+    # Sequência simulada dos níveis que o sensor vai ler
+    sequencia_simulada = [1, 2, 3, 4, 5]
+    
+    for nivel_atual in sequencia_simulada:
+        monitorar_e_exibir(nivel_atual)
+        time.sleep(1.2)
+        
+    print("\n" + "=" * 55)
+    print("Simulação concluída. Todos os níveis operam normalmente.")
+    print("=" * 55)
+
 if __name__ == "__main__":
     simular_sistema()
