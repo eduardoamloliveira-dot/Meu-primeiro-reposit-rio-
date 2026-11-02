@@ -1,0 +1,54 @@
+    <!-- ==================== 1º BLOCO: GOOGLE ==================== -->
+    <h1>Google</h1> <!-- Título com a tag h1 -->
+    <!-- Link opcional embutido na imagem -->
+    <a href="https://google.com.br" target="_blank">
+        <!-- URL externa aberta do logo estável em formato PNG -->
+        <img src="https://imagesverse.com" alt="Logotipo oficial do Google" width="200">
+    </a>
+    <br> <!-- Quebra de linha -->
+    <!-- Link textual exigido abaixo da imagem -->
+    <a href="https://google.com.br" target="_blank">Acessar o Google</a>
+    <br><br><br>
+
+    <!-- ==================== 2º BLOCO: JÚPITER WEB ==================== -->
+    <h1>Júpiter Web - USP</h1> <!-- Título com a tag h1 -->
+    <a href="https://uspdigital.usp.br/jupiterweb/" target="_blank">
+        <!-- URL otimizada do repositório Imgur que não sofre bloqueios de segurança -->
+        <img src="https://imgur.com" alt="Logotipo do sistema Júpiter Web da USP" width="200">
+    </a>
+    <br>
+    <a href="https://uspdigital.usp.br/jupiterweb/" target="_blank">Acessar o Júpiter Web</a>
+    <br><br><br>
+
+    <!-- ==================== 3º BLOCO: CENTRO PAULA SOUZA ==================== -->
+    <h1>Centro Paula Souza - EadTec</h1> <!-- Título com a tag h1 -->
+    <a href="https://cps.sp.gov.br." target="_blank">
+        <!-- Imagem PNG estável do repositório livre do Wikimedia Commons -->
+        <img src="https://wikimedia.org" alt="Logotipo do Centro Paula Souza" width="200">
+    </a>
+    <br>
+    <a href="https://cps.sp.gov.br." target="_blank">Acessar o CPS EadTec</a>
+    <br><br><br>
+
+    <!-- ==================== 4º BLOCO: DEEPSEEK ==================== -->
+    <h1>DeepSeek</h1> <!-- Título com a tag h1 -->
+    <a href="https://deepseek.com" target="_blank">
+        <!-- Versão PNG do logo oficial do DeepSeek do Wikimedia Commons -->
+        <img src="https://wikimedia.org" alt="Logotipo oficial da inteligência artificial DeepSeek" width="200">
+    </a>
+    <br>
+    <a href="https://deepseek.com" target="_blank">Acessar o DeepSeek</a>
+    <br><br><br>
+
+    <!-- ==================== 5º BLOCO: PAMGIA IBAMA ==================== -->
+    <h1>Pamgia - Ibama</h1> <!-- Título com a tag h1 -->
+    <a href="https://ibama.gov.br" target="_blank">
+        <!-- Brasão oficial do IBAMA convertido em PNG estável livre de bloqueios -->
+        <img src="https://wikimedia.org" alt="Brasão institucional do IBAMA" width="160">
+    </a>
+    <br>
+    <a href="https://ibama.gov.br" target="_blank">Acessar o Pamgia Ibama</a>
+    <br><br><br>
+
+</body>
+</html>
