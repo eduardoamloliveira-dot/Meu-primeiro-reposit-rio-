@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portal de Entretenimento Digital</title>
+  
+  <!-- Vinculando o CSS Reset primeiro -->
+  <link rel="stylesheet" href="reset.css">
+  
+  <!-- Vinculando o CSS Externo principal -->
+  <link rel="stylesheet" href="estilo.css">
+  
+  <!-- CSS Interno: Estilos gerais e Layout Flexível -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f111a;
+      color: #f5f5f7;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #161925;
+      border-bottom: 2px solid #23283e;
+    }
+    
+    /* Configuração do Layout Flexível */
+    .container-flex {
+      display: flex;
+      justify-content: center; /* Centraliza as colunas na tela */
+      flex-wrap: wrap;         /* Permite que as colunas quebrem de linha em telas menores (responsividade) */
+      padding: 30px;
+      gap: 20px;               /* Espaçamento uniforme entre as colunas */
+    }
+    
+    /* Três colunas flexíveis e ajustáveis */
+    .coluna-entretenimento {
+      background-color: #1c2030;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      
+      /* PROPRIEDADE CHAVE PARA COLUNAS AJUSTÁVEIS:
+         flex-grow: 1   -> Permite que a coluna estique para ocupar o espaço disponível.
+         flex-shrink: 1 -> Permite que ela encolha se o espaço diminuir.
+         flex-basis: 310px -> O tamanho ideal inicial de cada coluna. */
+      flex: 1 1 310px; 
+      
+      /* Define a largura máxima para que elas não fiquem excessivamente largas em monitores gigantes */
+      max-width: 400px; 
+      
+      box-sizing: border-box; /* Garante que o padding não aumente o tamanho final da coluna */
+    }
+    
+    .titulo-secao {
+      color: #00ff88;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .descricao {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #c7c7cc;
+    }
+    .lista-links {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0 0 0;
+      border-top: 1px solid #23283e;
+      padding-top: 10px;
+    }
+    .lista-links li {
+      margin-bottom: 8px;
+    }
+    .lista-links a {
+      color: #00ff88;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .lista-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- CSS Inline aplicado no h1 (Exigência do critério técnico) -->
+    <h1 style="color: #00ff88; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">
+      Meu Portal de Entretenimento Digital
+    </h1>
+  </header>
+
+  <!-- Container Flexbox para organizar as colunas lado a lado -->
+  <main class="container-flex">
+    
+    <!-- Seção 1: Filmes e Séries -->
+    <section id="filmes" class="coluna-entretenimento">
+      <h2 class="titulo-secao">Filmes e Séries</h2>
+      <p class="descricao">
+        Explore o universo cinematográfico da franquia Shrek, uma das maiores e mais divertidas animações da cultura pop.
+      </p>
+      <!-- Links diretos para arquivos de imagem reais (Unsplash Source) -->
+      <img src="https://unsplash.com" alt="Shrek e o Burro" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 10px;">
+      <img src="https://unsplash.com" alt="Shrek e a Princesa Fiona" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px;">
+    </section>
+
+    <!-- Seção 2: Games (Foco em Comunidades, Fóruns e Prática) -->
+    <section id="games" class="coluna-entretenimento">
+      <h2 class="titulo-secao">Games e Lógica</h2>
+      <p class="descricao">
+        Mergulhe na lógica dos jogos e interaja com comunidades de desenvolvedores aprendendo sintaxe básica através de desafios.
+      </p>
+      
+      <ul class="lista-links">
+        <li><a href="https://reddit.com" target="_blank">🌐 Fórum r/learnjavascript (Reddit)</a></li>
+        <li><a href="https://github.com" target="_blank">📦 Repositório de Exercícios Práticos (GitHub)</a></li>
+        <li><a href="https://alura.com.br" target="_blank">💬 Fórum de Estilização Dinâmica (Alura)</a></li>
+        <li><a href="https://meuguru.com" target="_blank">🧠 Desafios e Estudos Gerais (Meu Guru)</a></li>
+      </ul>
+    </section>
+
+    <!-- Seção 3: Tecnologia (Foco em Documentações e Guias Web) -->
+    <section id="tecnologia" class="coluna-entretenimento">
+      <h2 class="titulo-secao">Tecnologia</h2>
+      <p class="descricao">
+        Acompanhe guias definitivos sobre arquitetura web e aprenda as especificações modernas do padrão estrutural HTML.
+      </p>
+      
+      <ul class="lista-links">
+        <li><a href="https://web.dev" target="_blank">📖 Guia Estrutura do Documento (Web.dev)</a></li>
+        <li><a href="https://chrome.com" target="_blank">🛠 Modern Web Guidance (Chrome Developers)</a></li>
+        <li><a href="https://devmedia.com.br" target="_blank">📑 Documentação de Sintaxe HTML (DevMedia)</a></li>
+        <li><a href="https://cps.sp.gov.br" target="_blank">📚 Apostila do Centro Paula Souza (CPS)</a></li>
+        <li><a href="https://webmundi.com" target="_blank">💻 Introdução à Programação (WebMundi)</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>
